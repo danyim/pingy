@@ -1,0 +1,25 @@
+{
+  "name": "pingy-agent",
+  "version": "0.1.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danyim/pingy.git"
+  },
+  "author": "Daniel Yim",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/danyim/pingy/issues"
+  },
+  "homepage": "https://github.com/danyim/pingy#readme",
+  "dependencies": {
+    "body-parser": "^1.14.2",
+    "express": "^4.13.4",
+    "http": "0.0.0"
+  }
+}
