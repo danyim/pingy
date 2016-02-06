@@ -4,21 +4,33 @@ var request = require('request');
 var moment = require('moment');
 var configs = require('./configs.js');
 
-var storedIp = '';
+var storedIP;
 
-init();
+var app = init();
 
 function init() {
-  console.log('pingy pinger started, checking every', configs.PING_INTERVAL/1000, 's');
+  console.log('[pingy pinger started] Ping interval set to', configs.PING_INTERVAL/1000 + '/sec');
+
+  storedIP = '';
+
+  checkCurrentIP();
   setInterval(function() {
-    getMyIP(storedIp);
+    getExternalIP(storedIP);
   }, configs.PING_INTERVAL);
 }
 
+function checkCurrentIP() {
+  request(configs.DEST_URL, function(error, response, body) {
+    if (!error && response.statusCode == 200) {
+      console.log('Agent reports the current IP is', body);
+      storedIP = body;
+    }
+  }).end();
+}
+
 // Grabs the external IP from the provider and sends the value if it's different from the last
-function getMyIP (ip) {
+function getExternalIP(ip) {
   request(configs.IP_PROVIDER_URL, function(error, response, body) {
-    // console.log('stored ip is', storedIp);
     if (!error && response.statusCode == 200 && body != ip) {
       sendIP(body);
     }
@@ -28,8 +40,8 @@ function getMyIP (ip) {
 function sendIP(ip) {
   request(configs.DEST_URL + '/update?ip=' + ip, function(error, response, body) {
     if (!error && response.statusCode == 200) {
-      console.log(moment().format(), '\tUpdate sent! IP changed from', storedIp, 'to', ip);
-      storedIp = ip;
+      console.log(moment().format(), '-- Updated IP from', storedIP, 'to', ip, '(response: ' + body + ')');
+      storedIP = ip;
     }
   }).end();
 }
