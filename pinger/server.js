@@ -20,7 +20,7 @@ function init() {
 }
 
 function checkCurrentIP() {
-  request(configs.DEST_URL, function(error, response, body) {
+  request(configs.DEST_URL + '/current', function(error, response, body) {
     if (!error && response.statusCode == 200) {
       console.log('Agent reports the current IP is', body);
       storedIP = body;

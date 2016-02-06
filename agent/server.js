@@ -17,7 +17,7 @@ app.get('/', function(req, res) {
   res.redirect(url);
 });
 app.get('/current', function(req, res) {
-  return storedIP;
+  return res.send(storedIP);
 });
 app.get('/update', function(req, res) {
   storedIP = req.query.ip;
