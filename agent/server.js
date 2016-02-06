@@ -22,6 +22,6 @@ app.get('/update', function(req, res) {
   return res.send('agent: IP updated');
 });
 
-var server = app.listen(process.env.PORT || 1104, function () {
+var server = app.listen(process.env.PORT || 80, function () {
     console.log('pingy agent listening on port %s...', server.address().port);
 });
