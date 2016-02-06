@@ -11,9 +11,15 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get('/', function(req, res) {
-  var url = 'http://' + storedIP;
-  console.log('GET received; redirecting to', url);
-  res.redirect(url);
+  if(storedIP) {
+    var url = 'http://' + storedIP;
+    console.log('GET received; redirecting to', url);
+    res.redirect(url);
+  }
+  else {
+    res.send('');
+    console.log('GET received but IP is null');
+  }
 });
 app.get('/current', function(req, res) {
   return res.send(storedIP);
