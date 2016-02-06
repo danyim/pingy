@@ -1,13 +1,17 @@
 # pingy
-`pingy` is a couple of Node.js apps that interact with each other in order to broadcast a home computer's ever-changing IP to the internet. This comes in handy when used in unison with Heroku
+`pingy` is a couple of Node.js apps that interact with eachother to broadcast a home computer's ever-changing IP to the internet. It is a poor man's dynamic IP solution. This comes in handy when used in unison with the free tier of Heroku.
 
-### Installation
-- **Pinger**
-  - Place /pinger on a machine with NodeJS
-  - Use the [Guvnor](https://github.com/tableflip/guvnor) to run the pinger in the background
-- **Agent**
-  - Spin up a free Heroku instance and upload the /agent code into there
-- Navigate to your Heroku URL and you'll be automatically redirected to your home server!
+### Setting Up
+1. **Install the Agent in a Heroku Instance**
+  - Clone this repository on your local machine
+  - Using the [Heroku Toolbelt](https://toolbelt.heroku.com/), enter your credentials with `heroku login`
+  - Create an app `heroku create <your app name>`
+  - Run `./heroku.sh` to subtree the branch and only push the `agent` directory to the Heroku deployment
+2. **Install the Pinger on a machine on your home network**
+  - Clone this repository on the home server (or some other machine in your home network)
+  - `node pinger/server.js`
+    - OPTIONAL: Use the [Guvnor](https://github.com/tableflip/guvnor) to run the pinger as a service
+3. Navigate to your Heroku URL and you'll be redirected to your home server.
 
 ### Concept
 #### Pinger (on home machine)
