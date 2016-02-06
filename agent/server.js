@@ -3,7 +3,6 @@
 var express = require('express');
 var moment = require('moment');
 var bodyParser = require('body-parser');
-var configs = require('./configs.js');
 
 var app = express();
 var storedIP = null;
@@ -25,6 +24,6 @@ app.get('/update', function(req, res) {
   return res.send('success');
 });
 
-var server = app.listen(configs.PORT, function () {
+var server = app.listen(process.env.PORT || 80, function () {
     console.log('[pingy agent started] Listening on port %s...', server.address().port);
 });
