@@ -11,7 +11,7 @@ var app = init();
 function init() {
   console.log('[pingy pinger started] Ping interval set to', configs.PING_INTERVAL/1000 + '/sec');
 
-  storedIP = '';
+  storedIP = null;
 
   checkCurrentIP();
   setInterval(function() {
@@ -22,7 +22,7 @@ function init() {
 function checkCurrentIP() {
   request(configs.DEST_URL + '/current', function(error, response, body) {
     if (!error && response.statusCode == 200) {
-      console.log('Agent reports the current IP is', body);
+      console.log('Agent at', configs.DEST_URL, 'reports the current IP is', body);
       storedIP = body;
     }
   }).end();
