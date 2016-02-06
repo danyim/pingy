@@ -10,6 +10,8 @@
   - Make sure to grab the URL that is listed at the end of Heroku's deployment
 2. **Install the Pinger on a machine on your home network**
   - Clone this repository on the home server (or some other machine in your home network)
+  - **IMPORTANT:** Copy and edit the config file `cp pinger/configs.sample.js pinger/config.js`
+    - Paste in the Heroku URL for variable `DEST_URL`
   - `npm install`
   - `node pinger/server.js`
     - OPTIONAL: Use the [Guvnor](https://github.com/tableflip/guvnor) to run the pinger as a service
