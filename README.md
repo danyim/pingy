@@ -7,8 +7,10 @@
   - Using the [Heroku Toolbelt](https://toolbelt.heroku.com/), enter your credentials with `heroku login`
   - Create an app `heroku create <your app name>`
   - Run `./heroku.sh` to subtree the branch and only push the `agent` directory to the Heroku deployment
+  - Make sure to grab the URL that is listed at the end of Heroku's deployment
 2. **Install the Pinger on a machine on your home network**
   - Clone this repository on the home server (or some other machine in your home network)
+  - `npm install`
   - `node pinger/server.js`
     - OPTIONAL: Use the [Guvnor](https://github.com/tableflip/guvnor) to run the pinger as a service
 3. Navigate to your Heroku URL and you'll be redirected to your home server.
