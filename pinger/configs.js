@@ -1,12 +1,9 @@
 'use strict';
 
-var configs =  function() {
-  // var PING_INTERVAL = 1000 * 60 * 60; // ms * s * h every hour
-  // var IP_PROVIDER_URL = 'http://canihazip.com/s';
-  // var DEST_URL = 'http://test.herokuapp.net';
-  var PING_INTERVAL = 1000; // ms * s * h every hour
-  var IP_PROVIDER_URL = 'http://canihazip.com/s';
-  var DEST_URL = 'localhost';
-}
+var configs = {
+  PING_INTERVAL: 2500, // ms * s * h every hour
+  IP_PROVIDER_URL: 'http://canihazip.com/s',
+  DEST_URL: 'http://localhost:1104'
+};
 
 module.exports = configs;

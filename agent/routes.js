@@ -4,24 +4,14 @@ var appRouter = function(app) {
   app.get('/', function(req, res) {
     res.send('Hello World');
   });
-  app.post('/', function(req, res) {
-    console.log('received', req);
+  app.post('/ip', function(req, res) {
+    console.log('POST received', req.url);
     return res.send('ok!');
   });
-  // app.get('/account', function(req, res) {
-  //   var accountMock = {
-  //     'username': 'nraboy',
-  //     'password': '1234',
-  //     'twitter': '@nraboy'
-  //   }
-  //   if(!req.query.username) {
-  //     return res.send({'status': 'error', 'message': 'missing username'});
-  //   } else if(req.query.username != accountMock.username) {
-  //     return res.send({'status': 'error', 'message': 'wrong username'});
-  //   } else {
-  //     return res.send(accountMock);
-  //   }
-  // });
+  app.get('/update', function(req, res) {
+    console.log('GET received', req.query.ip);
+    return res.send('ok!');
+  });
 }
 
 module.exports = appRouter;
